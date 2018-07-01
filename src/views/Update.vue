@@ -1,8 +1,8 @@
 <template>
-  <div class="add">    
+  <div class="update">    
     <div class="row">
       <Sidebar/>
-      <AddArticle/>  
+      <UpdateArticle/>  
     </div>
   </div>  
 </template>
@@ -12,13 +12,13 @@
 
 
 import Sidebar from '@/components/Sidebar.vue'
-import AddArticle from '@/components/Add.vue'
+import UpdateArticle from '@/components/Update.vue'
 
 export default {
-  name: 'add',
+  name: 'update',
   components: {
     Sidebar,
-    AddArticle
+    UpdateArticle
   },
   created() {
     if(!localStorage.hasOwnProperty('token')){

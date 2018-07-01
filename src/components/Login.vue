@@ -59,32 +59,36 @@ export default {
     },    
     created: function() {
         if(localStorage.hasOwnProperty("token")) {
-            this.$router.push("home")
+            this.$router.push("/")
         }
     },
-    method:{
-
+    methods:{
         signIn() {
-            axios({
-                method:"post",
-                data: {
-                    email: this.email,
-                    password:this.password
+            this.$validator.validate().then(result=>{
+                if(!result) {
+                    console.log(result)
+                }else{
+                    axios({
+                        method:"post",
+                        url:"http://localhost:3000/users/signin",
+                        data: {
+                            email: this.email,
+                            password:this.password
+                        }
+                    })
+                    .then(response=>{
+                        localStorage.setItem("token",response.data.token)
+                        this.$router.push('/')
+                    })
+                    .catch(err=>{
+                        console.log(err.response);
+                        
+                    })
                 }
-            })
-            .then(response=>{
-                this.$router.push('/')
-            })
-            .catch(err=>{
-                console.log(err.message);
-                
-            })
+            })        
         }
-
     }
-
 }
-
 
 </script>
 

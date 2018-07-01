@@ -1,7 +1,7 @@
 <template>
     <div class="col s9" id="content">
         <h3>{{$route.params.title}}</h3> 
-        <div class="card hoverable small blue-grey darken-1">
+        <div class="card hoverable blue-grey darken-1">
             <div class="card-content white-text">
                 <span class="card-title">{{currArticle.title}}</span>
                 <p>{{currArticle.content}}</p>

@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import CompleteArticle from './views/CompleteArticle.vue'
 import Add from './views/Add.vue'
+import Update from './views/Update.vue'
 import Admin from './views/Admin.vue'
 
 Vue.use(Router)
@@ -24,6 +25,12 @@ export default new Router({
       path: '/add',
       name: 'addArticle',
       component: Add
+    },
+    {
+      path: '/update/:id',
+      name: 'updateArticle',
+      component: Update,
+      props:true
     },
     {
       path: '/admin',
