@@ -2,9 +2,9 @@
     <div class="col s9" id="content">
         <h3>{{$route.params.title}}</h3> 
         <div class="card hoverable blue-grey darken-1">
-            <div class="card-content white-text">
-                <span class="card-title">{{currArticle.title}}</span>
-                <p>{{currArticle.content}}</p>
+            <div class="card-content white-text" v-for="(article,index) in currArticleAlt" :key="index">
+                <span class="card-title">{{article.title}}</span>
+                <p>{{article.content}}</p>
             </div>
         </div>
     </div>    
@@ -12,25 +12,26 @@
 
 <script>
 import {mapState,mapActions} from 'vuex'
+import axios from "axios"
 
 export default {
     props:['title'],
     data() {
         return {
-           currArticle:[]
+           currArticle:[],
+           currArticleAlt:[]
         }
     },
     created() {
         this.getArticles()
-        
+        this.getOneArticle() 
+          
     },
     watch: {
         '$route' (to, from) {
-            this.checkTitle()
-        }
-    },
-    mounted() {
-        this.checkTitle()
+            this.getOneArticle()
+        },
+        
     },
     computed:{
         ...mapState([
@@ -41,14 +42,19 @@ export default {
        ...mapActions([
            'getArticles'
        ]),
-       checkTitle() {
-           console.log(this.articles,"====hoho");
-           
-           for(let i=0;i<this.articles.length;i++) {
-               if(this.articles[i].title == this.$route.params.title) {
-                   this.currArticle = this.articles[i]
+       getOneArticle() {
+           axios({
+               method:"get",
+               url:"http://localhost:3000/articles/showone",
+               headers:{
+                   title: this.$route.params.title
                }
-           }
+           })
+           .then(response=>{
+              
+               this.currArticleAlt = response.data.dataArticle
+                console.log("sssss",this.currArticleAlt);
+           })
        } 
     }
 }

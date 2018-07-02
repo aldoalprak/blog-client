@@ -27,7 +27,7 @@ export default new Router({
       component: Add
     },
     {
-      path: '/update/:id',
+      path: '/update/:title',
       name: 'updateArticle',
       component: Update,
       props:true

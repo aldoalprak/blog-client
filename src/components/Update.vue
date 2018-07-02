@@ -37,7 +37,7 @@ export default {
     },
     created() {
         this.getArticles()
-        this.checkArticle()
+        this.getOneArticle()
     },
     computed:{
         ...mapState([
@@ -48,18 +48,24 @@ export default {
         ...mapActions([
             'getArticles'
         ]),
-        checkArticle(){
-            for(let i=0;i<this.articles.length;i++) {
-               if(this.articles[i]._id == this.$route.params.id) {
-                   this.title = this.articles[i].title
-                   this.content = this.articles[i].content
+        getOneArticle() {
+           axios({
+               method:"get",
+               url:"http://localhost:3000/articles/showone",
+               headers:{
+                   title: this.$route.params.title
                }
-           }
-        },
+           })
+           .then(response=>{
+               console.log(response.data.dataArticle,"xxx");
+               this.title = response.data.dataArticle[0].title
+               this.content = response.data.dataArticle[0].content 
+           })
+       } ,
         updateArticle() {
             axios({
                 method:"put",
-                url:`http://localhost:3000/articles/update/${this.$route.params.id}`,    
+                url:`http://localhost:3000/articles/update/${this.$route.params.title}`,    
                 data: {
                     title:this.title,
                     content: this.content,

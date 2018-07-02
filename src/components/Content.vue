@@ -12,7 +12,7 @@
                         <router-link :to="`/content/${article.title}`">Read More</router-link>
                     </div>
                     <div class="col s2 offset-s10"  v-if="adminStatus == true">
-                        <router-link :to="`/update/${article._id}`"><button class="btn-floating btn-small waves-effect waves-light" ><i class="material-icons">edit</i></button></router-link>
+                        <router-link :to="`/update/${article.title}`"><button class="btn-floating btn-small waves-effect waves-light" ><i class="material-icons">edit</i></button></router-link>
                         <button class="btn-floating btn-small waves-effect waves-light red" @click="deleteArticle(article._id)"><i class="material-icons">delete</i></button>
                     </div>   
                 </div>
