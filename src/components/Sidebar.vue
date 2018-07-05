@@ -8,7 +8,8 @@
                     <router-link :to="'/'"><img class="circle" src="https://wallpapercave.com/wp/MOyrUQC.jpg"></router-link>
                     <span class="white-text name">Aldo Prakoso</span>
                     <span class="white-text email">alprak93@gmail.com</span>
-                    <a v-if="adminStatus == true" href class="waves-effect waves-light white-text"  @click="logout()">LogOut</a>
+                    <router-link :to="'/'" v-if="adminStatus == true" href class="waves-effect waves-light white-text" >LogOut</router-link>
+                    <router-link :to="'/admin'" v-if="adminStatus == false" href class="waves-effect waves-light white-text">LogIn</router-link>
                 </div></li>
             <li><router-link :to="'/'"><i class="material-icons">cloud</i>Welcome to my Blog</router-link></li>
             <li><div class="divider"></div></li>
@@ -53,6 +54,9 @@ export default {
         logout() {
             localStorage.clear()
             this.$router.push('/')
+        },
+        login() {
+            this.$router.push('/admin')
         },
         sideNavJs() {
             var elems = document.querySelectorAll('.sidenav');

@@ -67,7 +67,7 @@ export default {
                 if (result.value) {
                     axios({
                         method:"delete",
-                        url:`http://localhost:3000/articles/delete/${id}`,
+                        url:`https://api_blog.alprak.net/articles/delete/${id}`,
                         headers:{
                             token: localStorage.getItem("token")
                         }

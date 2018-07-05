@@ -51,7 +51,7 @@ export default {
         getOneArticle() {
            axios({
                method:"get",
-               url:"http://localhost:3000/articles/showone",
+               url:"https://api_blog.alprak.net/articles/showone",
                headers:{
                    title: this.$route.params.title
                }
@@ -65,7 +65,7 @@ export default {
         updateArticle() {
             axios({
                 method:"put",
-                url:`http://localhost:3000/articles/update/${this.$route.params.title}`,    
+                url:`https://api_blog.alprak.net/articles/update/${this.$route.params.title}`,    
                 data: {
                     title:this.title,
                     content: this.content,

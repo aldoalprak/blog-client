@@ -36,7 +36,7 @@ export default new Router({
       path: '/admin',
       name: 'admin',
       component: Admin
-    }
+    },
   ],
-  mode:'history'
+  mode:"history"
 })

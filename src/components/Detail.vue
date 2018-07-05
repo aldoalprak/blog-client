@@ -45,7 +45,7 @@ export default {
        getOneArticle() {
            axios({
                method:"get",
-               url:"http://localhost:3000/articles/showone",
+               url:"https://api_blog.alprak.net/articles/showone",
                headers:{
                    title: this.$route.params.title
                }

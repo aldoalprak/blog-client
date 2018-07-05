@@ -70,7 +70,7 @@ export default {
                 }else{
                     axios({
                         method:"post",
-                        url:"http://localhost:3000/users/signin",
+                        url:"https://api_blog.alprak.net/users/signin",
                         data: {
                             email: this.email,
                             password:this.password

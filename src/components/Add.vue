@@ -45,7 +45,7 @@ export default {
         addArticle() {
             axios({
                 method:"post",
-                url:"http://localhost:3000/articles/add",    
+                url:"https://api_blog.alprak.net/articles/add",    
                 data: {
                     title:this.title,
                     content: this.content,
